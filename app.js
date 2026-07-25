@@ -1,4 +1,4 @@
-// NAMA Integrated Valuation Master - Application Logic
+// NAMA Gesamtrechner & Übungssuite - Master Application Logic
 
 document.addEventListener('DOMContentLoaded', () => {
   // Tab Switching
@@ -10,11 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
       navBtns.forEach(b => b.classList.remove('active'));
       tabPanes.forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
-      document.getElementById(btn.dataset.tab).classList.add('active');
+      const target = document.getElementById(btn.dataset.tab);
+      if (target) target.classList.add('active');
     });
   });
 
-  // Presets Data
+  // ==========================================
+  // MODULE 1: M&A INTEGRATED VALUATION
+  // ==========================================
   const presets = {
     ss25pt1: {
       sks: 15, sgew: 14, sz: 5.5, rwacc: 8.15, rfk: 5.4, fk: 6500,
@@ -22,8 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       afa: [450, 450, 450, 450],
       co2: [7.0, 9.5, 9.0, 10.0],
       sp: [224, 232, 240, 240],
-      hasSocial: false,
-      social123: 0, socialEwig: 0
+      hasSocial: false, social123: 0, socialEwig: 0
     },
     ss24pt1: {
       sks: 15, sgew: 14, sz: 5.5, rwacc: 7.3625, rfk: 4.0, fk: 8000,
@@ -31,8 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
       afa: [240, 240, 240, 240],
       co2: [4.0, 2.9, 3.0, 2.9],
       sp: [224, 232, 240, 240],
-      hasSocial: true,
-      social123: 651, socialEwig: 714 // 6.2/6.4/6.7 * 105
+      hasSocial: true, social123: 651, socialEwig: 714
     },
     ss24pt2: {
       sks: 15, sgew: 14, sz: 5.5, rwacc: 7.78, rfk: 4.0, fk: 7000,
@@ -40,27 +41,20 @@ document.addEventListener('DOMContentLoaded', () => {
       afa: [300, 300, 300, 300],
       co2: [4.0, 2.9, 3.0, 2.9],
       sp: [224, 232, 240, 240],
-      hasSocial: false,
-      social123: 0, socialEwig: 0
+      hasSocial: false, social123: 0, socialEwig: 0
     }
   };
 
-  // DOM Elements
   const presetSelect = document.getElementById('preset-select');
   const inputSks = document.getElementById('input-sks');
   const inputSgew = document.getElementById('input-sgew');
   const inputSz = document.getElementById('input-sz');
   const inputRwacc = document.getElementById('input-rwacc');
-  const inputRfk = document.getElementById('input-rfk');
-  const inputFk = document.getElementById('input-fk');
   const enableSocial = document.getElementById('enable-social');
   const socialInputs = document.getElementById('social-inputs');
 
-  // Input Listeners
-  const allInputs = document.querySelectorAll('#calc-form input, #preset-select');
-  allInputs.forEach(input => {
-    input.addEventListener('input', calculateValuation);
-  });
+  const calcInputs = document.querySelectorAll('#calc-form input, #preset-select');
+  calcInputs.forEach(i => i.addEventListener('input', calculateMAValuation));
 
   presetSelect.addEventListener('change', (e) => {
     const p = presets[e.target.value];
@@ -69,10 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
       inputSgew.value = p.sgew;
       inputSz.value = p.sz;
       inputRwacc.value = p.rwacc;
-      inputRfk.value = p.rfk;
-      inputFk.value = p.fk;
+      document.getElementById('input-rfk').value = p.rfk;
+      document.getElementById('input-fk').value = p.fk;
 
-      for(let i=1; i<=3; i++) {
+      for (let i = 1; i <= 3; i++) {
         document.getElementById(`ebitda-${i}`).value = p.ebitda[i-1];
         document.getElementById(`afa-${i}`).value = p.afa[i-1];
         document.getElementById(`co2-${i}`).value = p.co2[i-1];
@@ -92,40 +86,32 @@ document.addEventListener('DOMContentLoaded', () => {
         socialInputs.classList.add('hidden');
       }
     }
-    calculateValuation();
+    calculateMAValuation();
   });
 
   enableSocial.addEventListener('change', () => {
-    if (enableSocial.checked) {
-      socialInputs.classList.remove('hidden');
-    } else {
-      socialInputs.classList.add('hidden');
-    }
-    calculateValuation();
+    if (enableSocial.checked) socialInputs.classList.remove('hidden');
+    else socialInputs.classList.add('hidden');
+    calculateMAValuation();
   });
 
-  // Accordion Toggle
   const toggleMathBtn = document.getElementById('toggle-math-btn');
   const mathDetails = document.getElementById('math-details');
-  toggleMathBtn.addEventListener('click', () => {
-    mathDetails.classList.toggle('hidden');
-  });
+  if (toggleMathBtn) {
+    toggleMathBtn.addEventListener('click', () => {
+      mathDetails.classList.toggle('hidden');
+    });
+  }
 
-  // Main Valuation Calculation Logic
-  let currentValuation = {};
-
-  function calculateValuation() {
-    // 1. Taxes & Rates
+  function calculateMAValuation() {
     const sks = parseFloat(inputSks.value) / 100 || 0;
     const sgew = parseFloat(inputSgew.value) / 100 || 0;
     const sz = parseFloat(inputSz.value) / 100 || 0;
     const rwacc = parseFloat(inputRwacc.value) / 100 || 0.0815;
 
-    // Effective Tax Rate: s_eff = s_ks * (1 + s_z) + s_gew
     const seff = sks * (1 + sz) + sgew;
     document.getElementById('res-tax').innerText = (seff * 100).toFixed(4) + '%';
 
-    // 2. Years Data
     const years = [
       { ebitda: parseFloat(document.getElementById('ebitda-1').value)||0, afa: parseFloat(document.getElementById('afa-1').value)||0, co2: parseFloat(document.getElementById('co2-1').value)||0, sp: parseFloat(document.getElementById('sp-1').value)||0 },
       { ebitda: parseFloat(document.getElementById('ebitda-2').value)||0, afa: parseFloat(document.getElementById('afa-2').value)||0, co2: parseFloat(document.getElementById('co2-2').value)||0, sp: parseFloat(document.getElementById('sp-2').value)||0 },
@@ -134,14 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let tbodyHTML = '';
-    let fcfList = [];
-    let envCostList = [];
+    let fcfList = [], envCostList = [];
 
     for (let i = 0; i < 4; i++) {
       const ebit = years[i].ebitda - years[i].afa;
       const fcf = ebit * (1 - seff);
-      const envCost = years[i].co2 * years[i].sp * 1000; // Mio Tonnen * €/t * 1000 = TE
-      
+      const envCost = years[i].co2 * years[i].sp * 1000;
       fcfList.push(fcf);
       envCostList.push(envCost);
 
@@ -157,24 +141,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.getElementById('res-table-body').innerHTML = tbodyHTML;
 
-    // 3. Financial Value Calculation
-    // FV = FCF_1 / (1+r) + FCF_2 / (1+r)^2 + FCF_3 / (1+r)^3 + FCF_ewig / (r * (1+r)^3)
     let fv_explicit = 0;
-    for (let t = 1; t <= 3; t++) {
-      fv_explicit += fcfList[t-1] / Math.pow(1 + rwacc, t);
-    }
+    for (let t = 1; t <= 3; t++) fv_explicit += fcfList[t-1] / Math.pow(1 + rwacc, t);
     const fv_perpetuity = fcfList[3] / (rwacc * Math.pow(1 + rwacc, 3));
     const financialValue = fv_explicit + fv_perpetuity;
 
-    // 4. Environmental Value Calculation
     let ev_explicit = 0;
-    for (let t = 1; t <= 3; t++) {
-      ev_explicit += envCostList[t-1] / Math.pow(1 + rwacc, t);
-    }
+    for (let t = 1; t <= 3; t++) ev_explicit += envCostList[t-1] / Math.pow(1 + rwacc, t);
     const ev_perpetuity = envCostList[3] / (rwacc * Math.pow(1 + rwacc, 3));
     const environmentalValue = ev_explicit + ev_perpetuity;
 
-    // 5. Social Value (if enabled)
     let socialValue = 0;
     if (enableSocial.checked) {
       const s123 = parseFloat(document.getElementById('social-123').value) || 0;
@@ -185,19 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
       socialValue = sv_exp + sv_perp;
     }
 
-    // 6. Integrated Value
     const integratedValue = financialValue - environmentalValue + socialValue;
 
-    // Store for trainer
-    currentValuation = {
-      seff: seff * 100,
-      fcf1: fcfList[0],
-      fv: financialValue,
-      ev: environmentalValue,
-      iv: integratedValue
-    };
-
-    // Render Summary Outputs
     document.getElementById('res-fv').innerText = financialValue.toFixed(2) + ' TE';
     document.getElementById('res-fv-mio').innerText = (financialValue / 1000).toFixed(4) + ' Mio. €';
 
@@ -207,126 +172,142 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('res-iv').innerText = integratedValue.toFixed(2) + ' TE';
     document.getElementById('res-iv-mio').innerText = (integratedValue / 1000).toFixed(4) + ' Mio. €';
 
-    // Render Step-by-Step Math Details
     document.getElementById('math-details').innerHTML = `
       <h4>Step 1: Effektiver Steuersatz</h4>
       <p>s_eff = 15% * (1 + 0.055) + 14% = <strong>${(seff*100).toFixed(4)}%</strong></p>
-      
-      <h4>Step 2: Free Cash Flows (NOPAT)</h4>
-      <p>FCF_2023 = (1850 - 450) * (1 - ${(seff).toFixed(5)}) = <strong>${fcfList[0].toFixed(4)} TE</strong></p>
-      <p>FCF_2024 = (2250 - 450) * (1 - ${(seff).toFixed(5)}) = <strong>${fcfList[1].toFixed(4)} TE</strong></p>
-      <p>FCF_2025 = (1950 - 450) * (1 - ${(seff).toFixed(5)}) = <strong>${fcfList[2].toFixed(4)} TE</strong></p>
-      <p>FCF_ewig = (2850 - 450) * (1 - ${(seff).toFixed(5)}) = <strong>${fcfList[3].toFixed(4)} TE</strong></p>
-      
-      <h4>Step 3: Barwert des Financial Value</h4>
-      <p>FV_explizit = ${fcfList[0].toFixed(2)} / (1.0815)^1 + ${fcfList[1].toFixed(2)} / (1.0815)^2 + ${fcfList[2].toFixed(2)} / (1.0815)^3 = ${fv_explicit.toFixed(2)} TE</p>
-      <p>FV_ewig = ${fcfList[3].toFixed(2)} / (0.0815 * 1.0815^3) = ${fv_perpetuity.toFixed(2)} TE</p>
-      <p><strong>Financial Value Ges. = ${financialValue.toFixed(2)} TE</strong></p>
-
-      <h4>Step 4: Barwert der Umwelt-Schadenkosten ($CO_2$)</h4>
-      <p>EV_explizit = ${envCostList[0].toFixed(0)} / (1.0815)^1 + ${envCostList[1].toFixed(0)} / (1.0815)^2 + ${envCostList[2].toFixed(0)} / (1.0815)^3 = ${ev_explicit.toFixed(2)} TE</p>
-      <p>EV_ewig = ${envCostList[3].toFixed(0)} / (0.0815 * 1.0815^3) = ${ev_perpetuity.toFixed(2)} TE</p>
-      <p><strong>Environmental Value Ges. = ${environmentalValue.toFixed(2)} TE</strong></p>
-
-      <h4>Step 5: Integrated Value</h4>
-      <p>Integrated Value = ${financialValue.toFixed(2)} TE - ${environmentalValue.toFixed(2)} TE ${socialValue > 0 ? '+ ' + socialValue.toFixed(2) + ' TE (Social)' : ''} = <strong>${integratedValue.toFixed(2)} TE</strong></p>
+      <h4>Step 2: Free Cash Flows &amp; Barwerte</h4>
+      <p>Financial Value (FV) = <strong>${financialValue.toFixed(2)} TE</strong> (${(financialValue/1000).toFixed(4)} Mio. €)</p>
+      <p>Environmental Value (EV) = <strong>${environmentalValue.toFixed(2)} TE</strong> (${(environmentalValue/1000).toFixed(4)} Mio. €)</p>
+      <p>Integrated Value (IV) = <strong>${integratedValue.toFixed(2)} TE</strong> (${(integratedValue/1000).toFixed(4)} Mio. €)</p>
     `;
 
-    // Render Interpretation
     if (integratedValue < 0) {
       document.getElementById('res-interpretation').innerHTML = `
         <span class="color-red"><strong>⚠️ NEGATIVER INTEGRATED VALUE (${(integratedValue/1000).toFixed(2)} Mio. €):</strong></span><br>
-        Der finanzielle Wert der Transaktion (${(financialValue/1000).toFixed(2)} Mio. €) wird durch die extrem hohen gesellschaftlichen Umweltschadenkosten durch $CO_2$ (${(environmentalValue/1000).toFixed(2)} Mio. €) vollständig vernichtet. Aus Sicht eines nachhaltigen Investors (Integrated Due Diligence) ist von der Übernahme in dieser Form abzuraten, sofern keine sofortigen Dekarbonisierungsmaßnahmen ergriffen werden.
+        Der finanzielle Wert (${(financialValue/1000).toFixed(2)} Mio. €) wird durch die Umweltschadenkosten durch CO2 (${(environmentalValue/1000).toFixed(2)} Mio. €) übertroffen. Aus Sicht einer Integrated Due Diligence ist von der Übernahme abzuraten, sofern keine Dekarbonisierung erfolgt.
       `;
     } else {
       document.getElementById('res-interpretation').innerHTML = `
         <span class="color-green"><strong>✅ POSITIVER INTEGRATED VALUE (${(integratedValue/1000).toFixed(2)} Mio. €):</strong></span><br>
-        Der finanzielle Wert der M&A-Transaktion übersteigt die monetarisierten Umweltschadenkosten. Die Übernahme schafft auch unter Einbeziehung externer Nachhaltigkeitseffekte einen positiven Nettowert.
+        Der finanzielle Ertrag übersteigt die externen Umweltschadenkosten. Die M&amp;A-Transaktion schafft gesellschaftlichen Nettowert.
       `;
     }
   }
 
-  // Initial Run
-  calculateValuation();
+  calculateMAValuation();
 
-  // Quiz / Trainer Logic
-  let currentQuiz = {};
-  const generateQuizBtn = document.getElementById('generate-quiz-btn');
-  
-  function generateQuiz() {
-    const presetsKeys = ['ss25pt1', 'ss24pt1', 'ss24pt2'];
-    const randomPreset = presetsKeys[Math.floor(Math.random() * presetsKeys.length)];
-    const p = presets[randomPreset];
+  // ==========================================
+  // MODULE 2: PCAF SCOPE 3 CAT 15 FINANCED EMISSIONS
+  // ==========================================
+  const pcafInputs = document.querySelectorAll('#pcaf-form input');
+  pcafInputs.forEach(i => i.addEventListener('input', calculatePCAF));
 
-    // Slight randomization
-    const mult = (0.9 + Math.random() * 0.2);
-    const quizRwacc = (p.rwacc * mult).toFixed(4);
-    const quizFk = Math.round(p.fk * mult);
+  function calculatePCAF() {
+    const credit = parseFloat(document.getElementById('pcaf-credit').value) || 0;
+    const totcap = parseFloat(document.getElementById('pcaf-totcap').value) || 1;
+    const sc12 = parseFloat(document.getElementById('pcaf-scope12').value) || 0;
+    const sc3 = parseFloat(document.getElementById('pcaf-scope3').value) || 0;
 
-    currentQuiz = {
-      presetName: randomPreset,
-      p: p,
-      rwacc: parseFloat(quizRwacc)
-    };
+    const af = (credit / totcap); // Attribution Factor
+    const finSc12 = af * sc12;
+    const finTotal = af * (sc12 + sc3);
 
-    document.getElementById('quiz-scenario-card').innerHTML = `
-      <h3><i class="fa-solid fa-file-signature color-accent"></i> Prüfungsaufgabe (M&amp;A Valuations)</h3>
-      <p>Ein Investor prüft die Übernahme eines Zielunternehmens. Folgende Eckdaten sind gegeben:</p>
-      <ul>
-        <li>EBITDA: t=1: ${p.ebitda[0]} TE | t=2: ${p.ebitda[1]} TE | t=3: ${p.ebitda[2]} TE | ab t=4: ${p.ebitda[3]} TE</li>
-        <li>Abschreibungen: Jährlich konstant ${p.afa[0]} TE</li>
-        <li>Steuersätze: KSt = ${p.sks}%, GewSt = ${p.sgew}%, SolZ = ${p.sz}%</li>
-        <li>Kapitalkostensatz $r_{wacc} = \mathbf{${quizRwacc}\%}$</li>
-        <li>CO2: t=1: ${p.co2[0]} Mio. t | t=2: ${p.co2[1]} Mio. t | t=3: ${p.co2[2]} Mio. t | ab t=4: ${p.co2[3]} Mio. t</li>
-        <li>Schattenpreise: t=1: ${p.sp[0]} €/t | t=2: ${p.sp[1]} €/t | t=3: ${p.sp[2]} €/t | ab t=4: ${p.sp[3]} €/t</li>
-      </ul>
+    document.getElementById('pcaf-res-af').innerText = (af * 100).toFixed(2) + ' %';
+    document.getElementById('pcaf-res-sc12').innerText = finSc12.toLocaleString('de-DE', {maximumFractionDigits: 0}) + ' t CO2e';
+    document.getElementById('pcaf-res-total').innerText = finTotal.toLocaleString('de-DE', {maximumFractionDigits: 0}) + ' t CO2e';
+
+    document.getElementById('pcaf-math-box').innerHTML = `
+      <strong>Rechenschema (PCAF Standard):</strong><br>
+      Attributionsfaktor (AF) = ${credit} Mio. € / ${totcap} Mio. € = <strong>${(af*100).toFixed(2)}%</strong><br>
+      Finanzierte Scope 1+2 = ${(af*100).toFixed(2)}% * ${sc12.toLocaleString()} = <strong>${finSc12.toLocaleString('de-DE', {maximumFractionDigits: 2})} t CO2e</strong><br>
+      Finanzierte Scope 1+2+3 = ${(af*100).toFixed(2)}% * ${(sc12+sc3).toLocaleString()} = <strong>${finTotal.toLocaleString('de-DE', {maximumFractionDigits: 2})} t CO2e</strong>
     `;
-
-    // Clear Feedback
-    document.querySelectorAll('.feedback').forEach(f => { f.innerHTML = ''; f.className = 'feedback'; });
-    document.querySelectorAll('.quiz-inputs-grid input').forEach(i => i.value = '');
   }
+  calculatePCAF();
 
-  generateQuizBtn.addEventListener('click', generateQuiz);
-  generateQuiz();
+  // ==========================================
+  // MODULE 3: EU TAXONOMIE & GAR
+  // ==========================================
+  const garInputs = document.querySelectorAll('#gar-form input');
+  garInputs.forEach(i => i.addEventListener('input', calculateGAR));
 
-  // Quiz Checking
-  document.querySelectorAll('.check-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const target = e.target.dataset.target;
-      const userVal = parseFloat(document.getElementById(`user-${target}`).value);
-      const fb = document.getElementById(`feedback-${target}`);
+  function calculateGAR() {
+    const align = parseFloat(document.getElementById('gar-tax-align').value) || 0;
+    const elig = parseFloat(document.getElementById('gar-tax-elig').value) || 0;
+    const cov = parseFloat(document.getElementById('gar-tot-cov').value) || 1;
 
-      let correctVal = 0;
-      let tol = 1.0; // Tolerance
+    const eligRatio = (elig / cov) * 100;
+    const gar = (align / cov) * 100;
 
-      if (target === 'seff') {
-        correctVal = currentValuation.seff;
-        tol = 0.01;
-      } else if (target === 'fcf1') {
-        correctVal = currentValuation.fcf1;
-        tol = 2.0;
-      } else if (target === 'fv') {
-        correctVal = currentValuation.fv;
-        tol = 50.0;
-      } else if (target === 'ev') {
-        correctVal = currentValuation.ev;
-        tol = 50.0;
-      } else if (target === 'iv') {
-        correctVal = currentValuation.iv;
-        tol = 50.0;
-      }
+    document.getElementById('gar-res-elig').innerText = eligRatio.toFixed(2) + ' %';
+    document.getElementById('gar-res-gar').innerText = gar.toFixed(2) + ' %';
+  }
+  calculateGAR();
 
-      if (isNaN(userVal)) {
-        fb.innerHTML = 'Bitte einen Wert eingeben.';
-        fb.className = 'feedback incorrect';
-      } else if (Math.abs(userVal - correctVal) <= tol) {
-        fb.innerHTML = `✅ Richtig! (${correctVal.toFixed(2)})`;
-        fb.className = 'feedback correct';
-      } else {
-        fb.innerHTML = `❌ Falsch. Exakter Wert: ${correctVal.toFixed(2)}`;
-        fb.className = 'feedback incorrect';
-      }
-    });
-  });
+  // ==========================================
+  // MODULE 4: LCA GETRÄNKEVERPACKUNG (PET VS. GLAS)
+  // ==========================================
+  const lcaInputs = document.querySelectorAll('#lca-form input');
+  lcaInputs.forEach(i => i.addEventListener('input', calculateLCA));
+
+  function calculateLCA() {
+    const petProd = parseFloat(document.getElementById('lca-pet-prod').value) || 0;
+    const petTrans = parseFloat(document.getElementById('lca-pet-trans').value) || 0;
+
+    const glasProd = parseFloat(document.getElementById('lca-glas-prod').value) || 0;
+    const glasTrips = parseFloat(document.getElementById('lca-glas-trips').value) || 1;
+    const glasSpuel = parseFloat(document.getElementById('lca-glas-spuel').value) || 0;
+    const glasTrans = parseFloat(document.getElementById('lca-glas-trans').value) || 0;
+
+    // Per 1.000 Liter (1.000 Flaschen)
+    const petTotalKg = (petProd + petTrans) * 1000 / 1000; // in kg
+    const glasTotalKg = ((glasProd / glasTrips) + glasSpuel + glasTrans) * 1000 / 1000; // in kg
+
+    const diffPct = ((glasTotalKg - petTotalKg) / petTotalKg) * 100;
+
+    document.getElementById('lca-res-pet').innerText = petTotalKg.toFixed(1) + ' kg CO2e';
+    document.getElementById('lca-res-glas').innerText = glasTotalKg.toFixed(1) + ' kg CO2e';
+
+    const diffElem = document.getElementById('lca-res-diff');
+    if (diffPct < 0) {
+      diffElem.innerText = `${diffPct.toFixed(1)}% CO2 (Glas ist besser)`;
+      diffElem.className = 'color-green';
+      document.getElementById('lca-res-text').innerText = `Glas-Mehrweg ist bei ${glasTrips} Umläufen ökologisch überlegen, da die hohen Herstellungs-Emissionen (${glasProd}g) auf ${glasTrips} Nutzungen aufgeteilt werden.`;
+    } else {
+      diffElem.innerText = `+${diffPct.toFixed(1)}% CO2 (PET ist besser)`;
+      diffElem.className = 'color-red';
+      document.getElementById('lca-res-text').innerText = `Bei nur ${glasTrips} Umläufen kann Glas-Mehrweg die hohen Herstellungsemissionen nicht kompensieren. Erst bei mehr Umläufen wird Glas besser.`;
+    }
+  }
+  calculateLCA();
+
+  // ==========================================
+  // MODULE 5: WACC & SOZIALES KAPITAL
+  // ==========================================
+  const waccInputs = document.querySelectorAll('#wacc-form input');
+  waccInputs.forEach(i => i.addEventListener('input', calculateWACC));
+
+  function calculateWACC() {
+    const rek = parseFloat(document.getElementById('w-rek').value) / 100 || 0;
+    const rfk = parseFloat(document.getElementById('w-rfk').value) / 100 || 0;
+    const ekq = parseFloat(document.getElementById('w-ekq').value) / 100 || 0.6;
+    const tax = parseFloat(document.getElementById('w-tax').value) / 100 || 0.3;
+    const rsoz = parseFloat(document.getElementById('w-rsoz').value) / 100 || 0.022;
+    const sozq = parseFloat(document.getElementById('w-sozq').value) / 100 || 0.15;
+
+    const fk|q = 1 - ekq;
+    const waccTrad = (ekq * rek) + (fkq * rfk * (1 - tax));
+
+    // Integrated WACC including social/env capital
+    const waccInteg = ((1 - sozq) * waccTrad) + (sozq * rsoz);
+
+    document.getElementById('wacc-res-trad').innerText = (waccTrad * 100).toFixed(2) + ' %';
+    document.getElementById('wacc-res-integ').innerText = (waccInteg * 100).toFixed(2) + ' %';
+
+    document.getElementById('wacc-formula-display').innerHTML = `
+      Klassischer WACC = (${(ekq*100).toFixed(0)}% * ${(rek*100).toFixed(1)}%) + (${(fkq*100).toFixed(0)}% * ${(rfk*100).toFixed(1)}% * (1 - ${(tax*100).toFixed(0)}%)) = <strong>${(waccTrad*100).toFixed(2)}%</strong><br>
+      Integrated WACC = (${((1-sozq)*100).toFixed(0)}% * ${(waccTrad*100).toFixed(2)}%) + (${(sozq*100).toFixed(0)}% * ${(rsoz*100).toFixed(1)}%) = <strong>${(waccInteg*100).toFixed(2)}%</strong>
+    `;
+  }
+  calculateWACC();
 });
