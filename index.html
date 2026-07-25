@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAMA 35-Punkte Integrated Valuation Masterclass</title>
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="logo-icon"><i class="fa-solid fa-calculator"></i></div>
+        <div>
+          <h1>NAMA Integrated Valuation Master</h1>
+          <p class="subtitle">Interaktiver Guide & Rechner für die 35-Punkte Klausuraufgabe (Dr. Mies)</p>
+        </div>
+      </div>
+      <div class="header-badges">
+        <span class="badge badge-success"><i class="fa-solid fa-check-circle"></i> 100% Altklausuren-Match</span>
+        <span class="badge badge-primary"><i class="fa-solid fa-trophy"></i> 35 / 100 Punkte</span>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-btn active" data-tab="tab-guide"><i class="fa-solid fa-book-open"></i> Formel- & Einsteiger-Guide</button>
+      <button class="nav-btn" data-tab="tab-traps"><i class="fa-solid fa-triangle-exclamation"></i> ⚠️ 5 Gefährliche Klausur-Fallen</button>
+      <button class="nav-btn" data-tab="tab-calculator"><i class="fa-solid fa-calculator"></i> Interaktiver Rechner</button>
+      <button class="nav-btn" data-tab="tab-trainer"><i class="fa-solid fa-dumbbell"></i> Klausur-Trainer (Prüfungsmodus)</button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+      <!-- TAB 1: GUIDE -->
+      <section id="tab-guide" class="tab-pane active">
+        <div class="grid-2">
+          <div class="card glass">
+            <h2><i class="fa-solid fa-bullseye color-accent"></i> Worum geht es in der 35-Punkte-Aufgabe?</h2>
+            <p>Die Aufgabe fordert die <strong>integrierte Unternehmensbewertung (Integrated Valuation)</strong> im Rahmen einer M&amp;A-Transaktion. Ein Käufer prüft die Übernahme eines Zielunternehmens.</p>
+            <p>Es müssen 3 Dimensionen berechnet werden:</p>
+            <ul class="feature-list">
+              <li><strong class="color-blue">1. Financial Value (FV):</strong> Der rein finanzielle Wert auf Basis zukünftiger Free Cash Flows (FCF).</li>
+              <li><strong class="color-red">2. Environmental Value (EV):</strong> Der finanzielle Barwert der durch $CO_2$ verursachten Umweltschadenkosten ( True Price Index).</li>
+              <li><strong class="color-green">3. Integrated Value (IV):</strong> Der gesellschaftliche Gesamtwert der Transaktion.</li>
+            </ul>
+            <div class="formula-box">
+              $$\text{Integrated Value} = \text{Financial Value} - \text{Environmental Value} + \text{Social Value}$$
+            </div>
+          </div>
+
+          <div class="card glass">
+            <h2><i class="fa-solid fa-list-check color-accent"></i> Das unumstößliche 5-Schritte-Schema</h2>
+            <div class="step-roadmap">
+              <div class="step-item">
+                <span class="step-num">1</span>
+                <div>
+                  <h4>Effektiven Steuersatz ($s_{eff}$) berechnen</h4>
+                  <code>s_eff = s_ks * (1 + s_z) + s_gew</code>
+                  <p class="step-desc">Achtung: SolZ ($s_z = 5{,}5\%$) fällt NUR auf die KSt ($s_{ks} = 15\%$) an!</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <span class="step-num">2</span>
+                <div>
+                  <h4>EBIT &amp; Free Cash Flows (FCF) berechnen</h4>
+                  <code>EBIT = EBITDA - Abschreibungen</code><br>
+                  <code>FCF = NOPAT = EBIT * (1 - s_eff)</code>
+                  <p class="step-desc">Da Investitionen = Abschreibungen, entspricht FCF exakt dem NOPAT.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <span class="step-num">3</span>
+                <div>
+                  <h4>Financial Value (Unternehmenswert) ermitteln</h4>
+                  <p class="step-desc">Diskontierung der Cashflows bis Jahr $n-1$ + Ewige Rente ab Jahr $n$ diskontiert auf heute ($t=0$).</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <span class="step-num">4</span>
+                <div>
+                  <h4>Environmental Value ($CO_2$-Schaden) ermitteln</h4>
+                  <code>Schaden_t = CO2_Mio_Tonnen_t * Schattenpreis_t</code>
+                  <p class="step-desc">Schattenkosten diskontieren mit demselben $r_{wacc}$.</p>
+                </div>
+              </div>
+
+              <div class="step-item">
+                <span class="step-num">5</span>
+                <div>
+                  <h4>Integrated Value &amp; Interpretation</h4>
+                  <code>Integrated Value = Financial Value - Environmental Value (+ Social Value)</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: TRAPS -->
+      <section id="tab-traps" class="tab-pane">
+        <div class="card glass">
+          <h2><i class="fa-solid fa-triangle-exclamation color-red"></i> ⚠️ Die 5 tödlichen Klausur-Fallen &amp; Edge Cases</h2>
+          <p>Hier verlieren Studierende in der Klausur die meisten Punkte. Lerne diese 5 Fallen auswendig!</p>
+          
+          <div class="traps-grid">
+            <div class="trap-card">
+              <div class="trap-header">
+                <span class="trap-badge">Falle 1</span>
+                <h3>Falsche SolZ-Berechnung beim Steuersatz</h3>
+              </div>
+              <p><strong>Falsch:</strong> $s_{eff} = (15\% + 14\%) \times 1{,}055 = 30{,}595\%$ (Falsch! SolZ fällt NICHT auf die Gewerbesteuer an!)</p>
+              <p><strong>Richtig:</strong> $s_{eff} = 15\% \times 1{,}055 + 14\% = 15{,}825\% + 14\% = \mathbf{29{,}825\%}$</p>
+            </div>
+
+            <div class="trap-card">
+              <div class="trap-header">
+                <span class="trap-badge">Falle 2</span>
+                <h3>Diskontierungsfehler bei der Ewigen Rente</h3>
+              </div>
+              <p>Die Ewige Rente $\frac{FCF_{\text{ewig}}}{r_{wacc}}$ ergibt den Wert zum Zeitpunkt <strong>$t = n-1$</strong> (z.B. Ende 2025). Du musst diesen Wert zusätzlich um $(1 + r_{wacc})^{n-1}$ auf den Zeitpunkt $t=0$ diskontieren!</p>
+              <div class="formula-box">
+                $$\text{Barwert}_{\text{ewig}} = \frac{FCF_{\text{ewig}}}{r_{wacc} \times (1 + r_{wacc})^{n-1}}$$
+              </div>
+            </div>
+
+            <div class="trap-card">
+              <div class="trap-header">
+                <span class="trap-badge">Falle 3</span>
+                <h3>Vorzeichen-Falle beim Integrated Value</h3>
+              </div>
+              <p><strong>Wichtig:</strong> Der Environmental Value ist ein <i>Schaden</i> ($\rightarrow$ <strong>abziehen</strong>). Ein Social Value (z.B. Lebensqualität/Quality Life Years) ist ein <i>Nutzen</i> ($\rightarrow$ <strong>hinzurechnen</strong>)!</p>
+              <code>Integrated Value = Financial Value - Environmental Value + Social Value</code>
+            </div>
+
+            <div class="trap-card">
+              <div class="trap-header">
+                <span class="trap-badge">Falle 4</span>
+                <h3>Fremdkapitalzinsen NICHT abziehen</h3>
+              </div>
+              <p>Im Aufgabentext steht oft das Fremdkapital (z.B. $6.500 \text{ TE}$ oder $8.000 \text{ TE}$) und die Fremdkapitalkosten $r_{fk} = 4\%$.</p>
+              <p><strong>Falle:</strong> Ziehe Fremdkapitalzinsen NICHT vom EBIT ab! Der WACC-Ansatz ist ein Bruttoansatz (Entity-Ansatz). Die Fremdkapitalkosten stecken bereits im WACC ($r_{wacc}$).</p>
+            </div>
+
+            <div class="trap-card">
+              <div class="trap-header">
+                <span class="trap-badge">Falle 5</span>
+                <h3>Einheiten &amp; Runden (4 Nachkommastellen)</h3>
+              </div>
+              <p>Im Deckblatt steht ausdrücklich: <em>"Rechnen Sie auf 4 Nachkommastellen."</em></p>
+              <p>Achte auf Einheiten: $CO_2$ ist in <strong>Mio. Tonnen</strong> angegeben, Schattenpreise in <strong>Euro/Tonne</strong>. Mio. Tonnen $\times$ €/Tonne = <strong>Mio. Euro</strong>!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: CALCULATOR -->
+      <section id="tab-calculator" class="tab-pane">
+        <div class="grid-calc">
+          <!-- Form Input Side -->
+          <div class="card glass">
+            <div class="card-header-flex">
+              <h2><i class="fa-solid fa-sliders color-accent"></i> Szenario &amp; Variablen</h2>
+              <div class="preset-selector">
+                <label>Altklausur Laden:</label>
+                <select id="preset-select">
+                  <option value="ss25pt1" selected>🍾 Krombacher / Hawesko (SS25 PT1)</option>
+                  <option value="ss24pt1">🍺 Zwickelbier / Sauerland Brauerei (SS24 PT1)</option>
+                  <option value="ss24pt2">🍷 Genussmanufaktur / BordeauxToGo (SS24 PT2)</option>
+                  <option value="custom">✏️ Eigenes Szenario</option>
+                </select>
+              </div>
+            </div>
+
+            <form id="calc-form">
+              <!-- Steuern & Zinsen -->
+              <h4 class="section-title"><i class="fa-solid fa-percent"></i> Steuersätze &amp; Kapitalkosten</h4>
+              <div class="input-grid-3">
+                <div class="input-group">
+                  <label>KSt ($s_{ks}$ in %)</label>
+                  <input type="number" id="input-sks" value="15" step="0.01">
+                </div>
+                <div class="input-group">
+                  <label>GewSt ($s_{gew}$ in %)</label>
+                  <input type="number" id="input-sgew" value="14" step="0.01">
+                </div>
+                <div class="input-group">
+                  <label>SolZ ($s_z$ in %)</label>
+                  <input type="number" id="input-sz" value="5.5" step="0.01">
+                </div>
+                <div class="input-group">
+                  <label>WACC ($r_{wacc}$ in %)</label>
+                  <input type="number" id="input-rwacc" value="8.15" step="0.0001">
+                </div>
+                <div class="input-group">
+                  <label>Fremdkapital Zins ($r_{fk}$ in %)</label>
+                  <input type="number" id="input-rfk" value="5.4" step="0.01">
+                </div>
+                <div class="input-group">
+                  <label>Fremdkapital ($FK$ in TE)</label>
+                  <input type="number" id="input-fk" value="6500" step="1">
+                </div>
+              </div>
+
+              <!-- Finanz-Tabelle -->
+              <h4 class="section-title"><i class="fa-solid fa-chart-line"></i> Finanzdaten (in TE = Tausend Euro)</h4>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Jahr</th>
+                      <th>2023 (t=1)</th>
+                      <th>2024 (t=2)</th>
+                      <th>2025 (t=3)</th>
+                      <th>ab 2026 (ewig)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>EBITDA</td>
+                      <td><input type="number" id="ebitda-1" value="1850"></td>
+                      <td><input type="number" id="ebitda-2" value="2250"></td>
+                      <td><input type="number" id="ebitda-3" value="1950"></td>
+                      <td><input type="number" id="ebitda-ewig" value="2850"></td>
+                    </tr>
+                    <tr>
+                      <td>Abschreibungen</td>
+                      <td><input type="number" id="afa-1" value="450"></td>
+                      <td><input type="number" id="afa-2" value="450"></td>
+                      <td><input type="number" id="afa-3" value="450"></td>
+                      <td><input type="number" id="afa-ewig" value="450"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Umweltdaten -->
+              <h4 class="section-title"><i class="fa-solid fa-leaf color-green"></i> Umweltdaten (CO2 &amp; True Price Schattenpreise)</h4>
+              <div class="table-responsive">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Jahr</th>
+                      <th>2023 (t=1)</th>
+                      <th>2024 (t=2)</th>
+                      <th>2025 (t=3)</th>
+                      <th>ab 2026 (ewig)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>CO2 (Mio. Tonnen)</td>
+                      <td><input type="number" id="co2-1" value="7" step="0.1"></td>
+                      <td><input type="number" id="co2-2" value="9.5" step="0.1"></td>
+                      <td><input type="number" id="co2-3" value="9" step="0.1"></td>
+                      <td><input type="number" id="co2-ewig" value="10" step="0.1"></td>
+                    </tr>
+                    <tr>
+                      <td>Schattenpreis (€/t)</td>
+                      <td><input type="number" id="sp-1" value="224"></td>
+                      <td><input type="number" id="sp-2" value="232"></td>
+                      <td><input type="number" id="sp-3" value="240"></td>
+                      <td><input type="number" id="sp-ewig" value="240"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Social Value Optional -->
+              <div class="social-box">
+                <label><input type="checkbox" id="enable-social"> Social Value einbeziehen (z.B. Quality Life Years in SS24 PT1)</label>
+                <div id="social-inputs" class="social-inputs hidden">
+                  <div class="input-grid-2">
+                    <div>
+                      <label>Social Nutzen t=1..3 (in TE)</label>
+                      <input type="number" id="social-123" value="651">
+                    </div>
+                    <div>
+                      <label>Social Nutzen ewig (in TE)</label>
+                      <input type="number" id="social-ewig" value="714">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Live Output Results Side -->
+          <div class="card glass results-card">
+            <h2><i class="fa-solid fa-square-poll-vertical color-accent"></i> Berechnungsergebnisse</h2>
+            
+            <div class="result-box result-effective-tax">
+              <span>Effektiver Steuersatz ($s_{eff}$):</span>
+              <strong id="res-tax">29.8250%</strong>
+            </div>
+
+            <!-- FCF Table Result -->
+            <h3>a) Cashflow-Größen (in TE)</h3>
+            <div class="table-responsive">
+              <table class="result-table">
+                <thead>
+                  <tr>
+                    <th>Jahr</th>
+                    <th>EBIT</th>
+                    <th>NOPAT / FCF</th>
+                    <th>CO2-Schaden (TE)</th>
+                  </tr>
+                </thead>
+                <tbody id="res-table-body">
+                  <!-- Generated via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Main Values Output -->
+            <h3>b) &amp; c) Valuation-Ergebnisse</h3>
+            <div class="summary-cards">
+              <div class="summary-card card-fv">
+                <span class="sc-title">Financial Value (FV)</span>
+                <span class="sc-value" id="res-fv">0 TE</span>
+                <span class="sc-sub" id="res-fv-mio">0.00 Mio. €</span>
+              </div>
+              <div class="summary-card card-ev">
+                <span class="sc-title">Environmental Value (EV)</span>
+                <span class="sc-value" id="res-ev">0 TE</span>
+                <span class="sc-sub" id="res-ev-mio">0.00 Mio. €</span>
+              </div>
+              <div class="summary-card card-iv">
+                <span class="sc-title">Integrated Value (IV)</span>
+                <span class="sc-value" id="res-iv">0 TE</span>
+                <span class="sc-sub" id="res-iv-mio">0.00 Mio. €</span>
+              </div>
+            </div>
+
+            <!-- Step by Step Math Explanation -->
+            <div class="accordion">
+              <button class="accordion-btn" id="toggle-math-btn"><i class="fa-solid fa-calculator"></i> Exakten Rechenweg für Klausurheft anzeigen</button>
+              <div class="accordion-content hidden" id="math-details">
+                <!-- Detailed math steps rendered by JS -->
+              </div>
+            </div>
+
+            <!-- d) Interpretation -->
+            <div class="interpretation-box">
+              <h4>d) Muster-Interpretation für die Klausur:</h4>
+              <p id="res-interpretation">Lädt Interpretation...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: TRAINER / PRÜFUNGSMODUS -->
+      <section id="tab-trainer" class="tab-pane">
+        <div class="card glass">
+          <div class="card-header-flex">
+            <h2><i class="fa-solid fa-dumbbell color-accent"></i> Klausur-Prüfungsmodus (Interactive Quiz)</h2>
+            <button class="btn btn-primary" id="generate-quiz-btn"><i class="fa-solid fa-arrows-rotate"></i> Neue Zufallsaufgabe generieren</button>
+          </div>
+          <p>Rechne die Aufgabe im Klausurheft-Stil durch und trage deine Ergebnisse hier ein. Die App prüft deine Werte sofort auf 4 Nachkommastellen genau!</p>
+          
+          <div id="quiz-scenario-card" class="quiz-scenario">
+            <!-- Scenario Prompt generated by JS -->
+          </div>
+
+          <div class="quiz-inputs-grid">
+            <div class="quiz-card">
+              <h4>1. Effektiver Steuersatz ($s_{eff}$ in %)</h4>
+              <div class="input-with-check">
+                <input type="number" id="user-seff" step="0.0001" placeholder="z.B. 29.8250">
+                <button class="btn btn-sm check-btn" data-target="seff">Prüfen</button>
+              </div>
+              <div class="feedback" id="feedback-seff"></div>
+            </div>
+
+            <div class="quiz-card">
+              <h4>2. FCF 2023 (in TE)</h4>
+              <div class="input-with-check">
+                <input type="number" id="user-fcf1" step="0.01" placeholder="z.B. 982.45">
+                <button class="btn btn-sm check-btn" data-target="fcf1">Prüfen</button>
+              </div>
+              <div class="feedback" id="feedback-fcf1"></div>
+            </div>
+
+            <div class="quiz-card">
+              <h4>3. Financial Value (in TE)</h4>
+              <div class="input-with-check">
+                <input type="number" id="user-fv" step="0.01" placeholder="z.B. 21500.00">
+                <button class="btn btn-sm check-btn" data-target="fv">Prüfen</button>
+              </div>
+              <div class="feedback" id="feedback-fv"></div>
+            </div>
+
+            <div class="quiz-card">
+              <h4>4. Environmental Value (in TE)</h4>
+              <div class="input-with-check">
+                <input type="number" id="user-ev" step="0.01" placeholder="z.B. 28000.00">
+                <button class="btn btn-sm check-btn" data-target="ev">Prüfen</button>
+              </div>
+              <div class="feedback" id="feedback-ev"></div>
+            </div>
+
+            <div class="quiz-card">
+              <h4>5. Integrated Value (in TE)</h4>
+              <div class="input-with-check">
+                <input type="number" id="user-iv" step="0.01" placeholder="z.B. -6500.00">
+                <button class="btn btn-sm check-btn" data-target="iv">Prüfen</button>
+              </div>
+              <div class="feedback" id="feedback-iv"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>NAMA Corporate Sustainability &amp; Sustainable Finance App &bull; Entwickelt für Antigravity / Uni Siegen SoSe 2026</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
