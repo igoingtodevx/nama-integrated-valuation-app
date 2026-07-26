@@ -27,6 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
       sp: [224, 232, 240, 240],
       hasSocial: false, social123: 0, socialEwig: 0
     },
+    ss25pt2: {
+      sks: 15, sgew: 14, sz: 5.5, rwacc: 8.15, rfk: 5.4, fk: 6500,
+      ebitda: [1950, 3250, 2950, 4850],
+      afa: [450, 450, 450, 450],
+      co2: [7.0, 9.5, 9.0, 10.0],
+      sp: [224, 232, 240, 240],
+      hasSocial: false, social123: 0, socialEwig: 0
+    },
     ss24pt1: {
       sks: 15, sgew: 14, sz: 5.5, rwacc: 7.3625, rfk: 4.0, fk: 8000,
       ebitda: [1500, 1750, 1900, 2020],
