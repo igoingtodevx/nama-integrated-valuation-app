@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NAMA Gesamtrechner & Übungssuite (Alle Aufgaben & Altklausuren)</title>
+  <title>NAMA 35-Punkte Integrated Valuation Klausur-Trainer (Von 0% auf 100%)</title>
   <!-- Google Fonts & FontAwesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,495 +16,263 @@
     <!-- Header -->
     <header class="app-header">
       <div class="logo-area">
-        <div class="logo-icon"><i class="fa-solid fa-calculator"></i></div>
+        <div class="logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
         <div>
-          <h1>NAMA Gesamtrechner &amp; Übungssuite</h1>
-          <p class="subtitle">Alle Übungsaufgaben, Altklausuren &amp; Berechnungen in einer App (Dr. Mies, Uni Siegen)</p>
+          <h1>NAMA 35-Punkte M&amp;A Klausur-Trainer</h1>
+          <p class="subtitle">Schritt-für-Schritt von 0% Wissen zur perfekten 35-Punkte-Lösung im Klausurheft (Dr. Mies, Uni Siegen)</p>
         </div>
       </div>
       <div class="header-badges">
-        <span class="badge badge-success"><i class="fa-solid fa-check-circle"></i> 100% Übungen &amp; Skript</span>
-        <span class="badge badge-primary"><i class="fa-solid fa-trophy"></i> Alle 6 Rechenmodule</span>
+        <span class="badge badge-success"><i class="fa-solid fa-bullseye"></i> 35 von 90 Klausurpunkten</span>
+        <span class="badge badge-primary"><i class="fa-solid fa-star"></i> Einsteiger-Modus aktiv</span>
       </div>
     </header>
 
-    <!-- Module Selector Tabs -->
-    <nav class="nav-tabs">
-      <button class="nav-btn active" data-tab="mod-ma"><i class="fa-solid fa-scale-balanced"></i> 1. M&amp;A Valuation (35P)</button>
-      <button class="nav-btn" data-tab="mod-pcaf"><i class="fa-solid fa-industry"></i> 2. PCAF Scope 3 Cat 15</button>
-      <button class="nav-btn" data-tab="mod-taxonomie"><i class="fa-solid fa-chart-pie"></i> 3. Taxonomie &amp; GAR</button>
-      <button class="nav-btn" data-tab="mod-lca"><i class="fa-solid fa-recycle"></i> 4. LCA Ökobilanzierung</button>
-      <button class="nav-btn" data-tab="mod-wacc"><i class="fa-solid fa-coins"></i> 5. WACC &amp; Soz. Kapital</button>
-      <button class="nav-btn" data-tab="tab-traps"><i class="fa-solid fa-triangle-exclamation"></i> ⚠️ Klausur-Fallen</button>
-    </nav>
+    <!-- Beginner Welcome & Onboarding Banner -->
+    <div class="welcome-banner glass">
+      <div class="wb-content">
+        <h3><i class="fa-solid fa-rocket color-accent"></i> Du hast noch 0% gelernt? So holst du dir hier sofort 35 Punkte:</h3>
+        <ol class="wb-steps">
+          <li><strong>Wähle unten eine echte Altklausur</strong> (z. B. <em>Krombacher / Hawesko SS25 PT1</em>).</li>
+          <li><strong>Lies die Original-Aufgabenstellung</strong> in der gelben Box durch.</li>
+          <li><strong>Klicke auf den Button „Rechenweg &amp; Klausurheft-Lösung anzeigen“</strong> – die App rechnet dir Schritt für Schritt vor, was du exakt in dein Klausurheft schreiben musst!</li>
+        </ol>
+      </div>
+    </div>
 
-    <!-- Main Content Area -->
-    <main class="content-area">
+    <!-- Scenario Selection Bar -->
+    <div class="scenario-bar glass">
+      <div class="sb-label"><i class="fa-solid fa-folder-open"></i> <strong>Wähle eine Altklausur-Prüfung:</strong></div>
+      <div class="sb-select-wrapper">
+        <select id="preset-select" class="main-select">
+          <option value="ss25pt1" selected>🍾 Altklausur 1: Krombacher Brauerei / Hawesko GmbH (SS25 PT1)</option>
+          <option value="ss25pt2">🏭 Altklausur 2: Maschinenbau Müller GmbH (SS25 PT2)</option>
+          <option value="ss24pt1">🍺 Altklausur 3: Siegerland Zwickelbier / Sauerland Brauerei (SS24 PT1)</option>
+          <option value="ss24pt2">🍷 Altklausur 4: Siegerländer Genussmanufaktur / BordeauxToGo (SS24 PT2)</option>
+          <option value="custom">✏️ Eigenes Szenario / Zahlen anpassen</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Original Exam Paper Box (Wortwörtlicher Klausurtext) -->
+    <section class="card glass exam-story-card">
+      <div class="exam-story-header">
+        <h2><i class="fa-solid fa-file-signature color-accent"></i> Original-Aufgabenstellung aus der Klausur (35 Punkte)</h2>
+        <span class="exam-tag" id="exam-tag-label">Sommersemester 2025 – 1. PT (Dr. Mies)</span>
+      </div>
       
-      <!-- MODULE 1: M&A INTEGRATED VALUATION (35 PUNKTEN) -->
-      <section id="mod-ma" class="tab-pane active">
-        <div class="grid-calc">
-          <div class="card glass">
-            <div class="card-header-flex">
-              <h2><i class="fa-solid fa-sliders color-accent"></i> M&amp;A Integrierte Unternehmensbewertung (35P)</h2>
-              <div class="preset-selector">
-                <label>Szenario:</label>
-                <select id="preset-select">
-                  <option value="ss25pt1" selected>🍾 Krombacher / Hawesko (SS25 PT1)</option>
-                  <option value="ss25pt2">🏭 Maschinenbau Müller GmbH (SS25 PT2)</option>
-                  <option value="ss24pt1">🍺 Zwickelbier / Sauerland Brauerei (SS24 PT1)</option>
-                  <option value="ss24pt2">🍷 Genussmanufaktur / BordeauxToGo (SS24 PT2)</option>
-                  <option value="custom">✏️ Eigenes Szenario</option>
-                </select>
-              </div>
-            </div>
+      <div class="exam-story-body" id="exam-story-text">
+        <!-- Dynamic Original Task Text injected here -->
+      </div>
 
-            <form id="calc-form">
-              <h4 class="section-title"><i class="fa-solid fa-percent"></i> Steuersätze &amp; Kapitalkosten</h4>
-              <div class="input-grid-3">
-                <div class="input-group">
-                  <label>KSt ($s_{ks}$ in %)</label>
-                  <input type="number" id="input-sks" value="15" step="0.01">
-                </div>
-                <div class="input-group">
-                  <label>GewSt ($s_{gew}$ in %)</label>
-                  <input type="number" id="input-sgew" value="14" step="0.01">
-                </div>
-                <div class="input-group">
-                  <label>SolZ ($s_z$ in %)</label>
-                  <input type="number" id="input-sz" value="5.5" step="0.01">
-                </div>
-                <div class="input-group">
-                  <label>WACC ($r_{wacc}$ in %)</label>
-                  <input type="number" id="input-rwacc" value="8.15" step="0.0001">
-                </div>
-                <div class="input-group">
-                  <label>FK-Zins ($r_{fk}$ in %)</label>
-                  <input type="number" id="input-rfk" value="5.4" step="0.01">
-                </div>
-                <div class="input-group">
-                  <label>Fremdkapital ($FK$ in TE)</label>
-                  <input type="number" id="input-fk" value="6500" step="1">
-                </div>
-              </div>
+      <div class="exam-questions-box">
+        <h4><i class="fa-solid fa-list-check"></i> Die 4 Teilaufgaben im Klausurheft:</h4>
+        <ul class="questions-list">
+          <li><strong>a. (15 Punkte):</strong> Berechnen Sie anhand der obigen Angaben die Cash-Flow-Größen (FCF / NOPAT), die zur Bestimmung des Unternehmenswertes benötigt werden. <em>(Persönliche Steuern sind nicht zu berücksichtigen.)</em></li>
+          <li><strong>b. (15 Punkte):</strong> Ermitteln Sie den Financial Value und den Environmental Value (sowie ggf. Social Value) der M&amp;A-Transaktion.</li>
+          <li><strong>c. (2 Punkte):</strong> Ermitteln Sie den Integrated Value.</li>
+          <li><strong>d. (3 Punkte):</strong> Erläutern und interpretieren Sie Ihre Ergebnisse.</li>
+        </ul>
+      </div>
+    </section>
 
-              <h4 class="section-title"><i class="fa-solid fa-chart-line"></i> Finanzdaten (in TE = Tausend Euro)</h4>
-              <div class="table-responsive">
-                <table class="data-table">
-                  <thead>
-                    <tr>
-                      <th>Jahr</th>
-                      <th>t=1</th>
-                      <th>t=2</th>
-                      <th>t=3</th>
-                      <th>ab t=4 (ewig)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>EBITDA</td>
-                      <td><input type="number" id="ebitda-1" value="1850"></td>
-                      <td><input type="number" id="ebitda-2" value="2250"></td>
-                      <td><input type="number" id="ebitda-3" value="1950"></td>
-                      <td><input type="number" id="ebitda-ewig" value="2850"></td>
-                    </tr>
-                    <tr>
-                      <td>Abschreibungen</td>
-                      <td><input type="number" id="afa-1" value="450"></td>
-                      <td><input type="number" id="afa-2" value="450"></td>
-                      <td><input type="number" id="afa-3" value="450"></td>
-                      <td><input type="number" id="afa-ewig" value="450"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+    <!-- Main Calculation & Solution Roadmap -->
+    <section class="card glass solution-roadmap-card">
+      <h2><i class="fa-solid fa-calculator color-green"></i> Schritt-für-Schritt Musterlösung für dein Klausurheft</h2>
+      <p class="subtitle">Hier siehst du exakt, wie jede Zahl berechnet wird und wie du die Lösung in der Klausur aufschreiben musst.</p>
 
-              <h4 class="section-title"><i class="fa-solid fa-leaf color-green"></i> Umweltdaten (CO2 &amp; Schattenpreise)</h4>
-              <div class="table-responsive">
-                <table class="data-table">
-                  <thead>
-                    <tr>
-                      <th>Jahr</th>
-                      <th>t=1</th>
-                      <th>t=2</th>
-                      <th>t=3</th>
-                      <th>ab t=4 (ewig)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>CO2 (Mio. t)</td>
-                      <td><input type="number" id="co2-1" value="7" step="0.1"></td>
-                      <td><input type="number" id="co2-2" value="9.5" step="0.1"></td>
-                      <td><input type="number" id="co2-3" value="9" step="0.1"></td>
-                      <td><input type="number" id="co2-ewig" value="10" step="0.1"></td>
-                    </tr>
-                    <tr>
-                      <td>Schattenpreis (€/t)</td>
-                      <td><input type="number" id="sp-1" value="224"></td>
-                      <td><input type="number" id="sp-2" value="232"></td>
-                      <td><input type="number" id="sp-3" value="240"></td>
-                      <td><input type="number" id="sp-ewig" value="240"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+      <!-- Step 1: Effektiver Steuersatz -->
+      <div class="step-card">
+        <div class="step-badge">Schritt 1 von 5</div>
+        <div class="step-title">Effektiven Ertragsteuersatz ($s_{eff}$) berechnen</div>
+        <div class="step-desc">
+          <strong>Formel:</strong> $s_{eff} = s_{ks} \cdot (1 + s_z) + s_{gew}$<br>
+          <em>Achtung (Klausurfalle #1):</em> Der Solidaritätszuschlag ($s_z = 5{,}5\%$) wird NUR auf die Körperschaftsteuer ($s_{ks} = 15\%$) gerechnet, NIEMALS auf die Gewerbesteuer!
+        </div>
+        <div class="step-calc-box" id="step1-calc">
+          <!-- Calculation step 1 -->
+        </div>
+      </div>
 
-              <div class="social-box">
-                <label><input type="checkbox" id="enable-social"> Social Value einbeziehen (z.B. Quality Life Years in SS24 PT1)</label>
-                <div id="social-inputs" class="social-inputs hidden">
-                  <div class="input-grid-2">
-                    <div>
-                      <label>Social Nutzen t=1..3 (in TE)</label>
-                      <input type="number" id="social-123" value="651">
-                    </div>
-                    <div>
-                      <label>Social Nutzen ewig (in TE)</label>
-                      <input type="number" id="social-ewig" value="714">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </form>
+      <!-- Step 2: Cashflow Grössen (FCF / NOPAT) -->
+      <div class="step-card">
+        <div class="step-badge">Schritt 2 von 5</div>
+        <div class="step-title">Teilaufgabe a): Cashflow-Größen (FCF / NOPAT) pro Jahr ermitteln</div>
+        <div class="step-desc">
+          <strong>Formel:</strong> $\text{EBIT} = \text{EBITDA} - \text{Abschreibungen}$ &bull; $\text{NOPAT / FCF} = \text{EBIT} \times (1 - s_{eff})$<br>
+          <em>Achtung (Klausurfalle #4):</em> Fremdkapitalzinsen werden beim Brutto-WACC-Ansatz NICHT vom EBIT abgezogen!
+        </div>
+        <div class="table-responsive margin-top">
+          <table class="result-table">
+            <thead>
+              <tr>
+                <th>Jahr</th>
+                <th>EBITDA</th>
+                <th>Abschreibungen</th>
+                <th>EBIT</th>
+                <th>NOPAT / FCF (in TE)</th>
+                <th>CO2-Schaden (in TE)</th>
+              </tr>
+            </thead>
+            <tbody id="fcf-table-body">
+              <!-- FCF Table injected here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Step 3: Financial Value (FV) & Environmental Value (EV) -->
+      <div class="step-card">
+        <div class="step-badge">Schritt 3 von 5</div>
+        <div class="step-title">Teilaufgabe b): Financial Value (FV) &amp; Environmental Value (EV) berechnen</div>
+        <div class="step-desc">
+          <strong>Formel:</strong> Barwert = Summe der abgezinsten Werte (Jahre 1 bis 3) + Abgezinste Ewige Rente (ab Jahr 4).<br>
+          <em>Achtung (Klausurfalle #2):</em> Barwert Ewige Rente $= \frac{\text{Wert}_{ewig}}{r_{wacc} \cdot (1 + r_{wacc})^3}$ (Zusätzliche Abzinsung auf $t=0$!).
+        </div>
+        <div class="summary-cards margin-top">
+          <div class="summary-card card-fv">
+            <span class="sc-title">Financial Value (FV)</span>
+            <span class="sc-value" id="res-fv">0 TE</span>
+            <span class="sc-sub" id="res-fv-mio">0.00 Mio. €</span>
           </div>
+          <div class="summary-card card-ev">
+            <span class="sc-title">Environmental Value (EV)</span>
+            <span class="sc-value" id="res-ev">0 TE</span>
+            <span class="sc-sub" id="res-ev-mio">0.00 Mio. €</span>
+          </div>
+          <div class="summary-card card-sv hidden" id="card-sv-box">
+            <span class="sc-title">Social Value (SV)</span>
+            <span class="sc-value" id="res-sv">0 TE</span>
+            <span class="sc-sub" id="res-sv-mio">0.00 Mio. €</span>
+          </div>
+        </div>
 
-          <div class="card glass results-card">
-            <h2><i class="fa-solid fa-square-poll-vertical color-accent"></i> M&amp;A Berechnungsergebnisse</h2>
-            <div class="result-effective-tax">
-              <span>Effektiver Steuersatz ($s_{eff}$):</span>
-              <strong id="res-tax">29.8250%</strong>
+        <div class="accordion margin-top">
+          <button class="accordion-btn" id="toggle-math-btn"><i class="fa-solid fa-calculator"></i> Exakten Rechenweg Zeile für Zeile anzeigen</button>
+          <div class="accordion-content hidden" id="math-details"></div>
+        </div>
+      </div>
+
+      <!-- Step 4: Integrated Value (IV) -->
+      <div class="step-card">
+        <div class="step-badge">Schritt 4 von 5</div>
+        <div class="step-title">Teilaufgabe c): Integrated Value (IV) berechnen</div>
+        <div class="step-desc">
+          <strong>Formel:</strong> $\text{Integrated Value (IV)} = \text{Financial Value (FV)} - \text{Environmental Value (EV)} + \text{Social Value (SV)}$<br>
+          <em>Achtung (Klausurfalle #3):</em> Environmental Value ist ein Umweltschaden, also ABZIEHEN (minus). Social Value ist ein Nutzen, also ADDIEREN (plus).
+        </div>
+        <div class="result-box-iv margin-top">
+          <div class="iv-label">Ergebnis Teilaufgabe c):</div>
+          <div class="iv-value" id="res-iv">0 TE</div>
+          <div class="iv-sub" id="res-iv-mio">(0.00 Mio. €)</div>
+        </div>
+      </div>
+
+      <!-- Step 5: Interpretation für Teilaufgabe d -->
+      <div class="step-card">
+        <div class="step-badge">Schritt 5 von 5</div>
+        <div class="step-title">Teilaufgabe d): Fertiger Antworttext für dein Klausurheft (3 Punkte)</div>
+        <div class="interpretation-box">
+          <h4><i class="fa-solid fa-pen-to-square"></i> Schreibe diesen Satz wortwörtlich in deine Klausur:</h4>
+          <p id="res-interpretation">Lädt Antworttext...</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Collapsible Advanced Settings (Für Experten oder eigene Zahlen) -->
+    <div class="accordion margin-top">
+      <button class="accordion-btn" id="toggle-settings-btn"><i class="fa-solid fa-sliders"></i> Fortgeschritten: Parameter &amp; Zahlen manuell anpassen</button>
+      <div class="accordion-content hidden" id="settings-content">
+        <div class="card glass">
+          <form id="calc-form">
+            <h4 class="section-title"><i class="fa-solid fa-percent"></i> Steuersätze &amp; Kapitalkosten</h4>
+            <div class="input-grid-3">
+              <div class="input-group">
+                <label>KSt ($s_{ks}$ in %)</label>
+                <input type="number" id="input-sks" value="15" step="0.01">
+              </div>
+              <div class="input-group">
+                <label>GewSt ($s_{gew}$ in %)</label>
+                <input type="number" id="input-sgew" value="14" step="0.01">
+              </div>
+              <div class="input-group">
+                <label>SolZ ($s_z$ in %)</label>
+                <input type="number" id="input-sz" value="5.5" step="0.01">
+              </div>
+              <div class="input-group">
+                <label>WACC ($r_{wacc}$ in %)</label>
+                <input type="number" id="input-rwacc" value="8.15" step="0.0001">
+              </div>
             </div>
 
-            <h3>a) Cashflow-Größen (in TE)</h3>
+            <h4 class="section-title"><i class="fa-solid fa-table"></i> Finanz- &amp; CO2-Tabellenwerte</h4>
             <div class="table-responsive">
-              <table class="result-table">
+              <table class="data-table">
                 <thead>
                   <tr>
                     <th>Jahr</th>
-                    <th>EBIT</th>
-                    <th>NOPAT / FCF</th>
-                    <th>CO2-Schaden (TE)</th>
+                    <th>t=1</th>
+                    <th>t=2</th>
+                    <th>t=3</th>
+                    <th>ab t=4 (ewig)</th>
                   </tr>
                 </thead>
-                <tbody id="res-table-body"></tbody>
+                <tbody>
+                  <tr>
+                    <td>EBITDA (TE)</td>
+                    <td><input type="number" id="ebitda-1" value="1850"></td>
+                    <td><input type="number" id="ebitda-2" value="2250"></td>
+                    <td><input type="number" id="ebitda-3" value="1950"></td>
+                    <td><input type="number" id="ebitda-ewig" value="2850"></td>
+                  </tr>
+                  <tr>
+                    <td>Abschreibungen (TE)</td>
+                    <td><input type="number" id="afa-1" value="450"></td>
+                    <td><input type="number" id="afa-2" value="450"></td>
+                    <td><input type="number" id="afa-3" value="450"></td>
+                    <td><input type="number" id="afa-ewig" value="450"></td>
+                  </tr>
+                  <tr>
+                    <td>CO2 (Mio. t)</td>
+                    <td><input type="number" id="co2-1" value="7" step="0.1"></td>
+                    <td><input type="number" id="co2-2" value="9.5" step="0.1"></td>
+                    <td><input type="number" id="co2-3" value="9" step="0.1"></td>
+                    <td><input type="number" id="co2-ewig" value="10" step="0.1"></td>
+                  </tr>
+                  <tr>
+                    <td>Schattenpreis (€/t)</td>
+                    <td><input type="number" id="sp-1" value="224"></td>
+                    <td><input type="number" id="sp-2" value="232"></td>
+                    <td><input type="number" id="sp-3" value="240"></td>
+                    <td><input type="number" id="sp-ewig" value="240"></td>
+                  </tr>
+                </tbody>
               </table>
             </div>
 
-            <h3>b) &amp; c) Valuation-Ergebnisse</h3>
-            <div class="summary-cards">
-              <div class="summary-card card-fv">
-                <span class="sc-title">Financial Value (FV)</span>
-                <span class="sc-value" id="res-fv">0 TE</span>
-                <span class="sc-sub" id="res-fv-mio">0.00 Mio. €</span>
-              </div>
-              <div class="summary-card card-ev">
-                <span class="sc-title">Environmental Value (EV)</span>
-                <span class="sc-value" id="res-ev">0 TE</span>
-                <span class="sc-sub" id="res-ev-mio">0.00 Mio. €</span>
-              </div>
-              <div class="summary-card card-iv">
-                <span class="sc-title">Integrated Value (IV)</span>
-                <span class="sc-value" id="res-iv">0 TE</span>
-                <span class="sc-sub" id="res-iv-mio">0.00 Mio. €</span>
+            <div class="social-box margin-top">
+              <label><input type="checkbox" id="enable-social"> Social Value einbeziehen (Quality Life Years wie in SS24 PT1)</label>
+              <div id="social-inputs" class="social-inputs hidden">
+                <div class="input-grid-2 margin-top">
+                  <div>
+                    <label>Social Nutzen t=1..3 (in TE)</label>
+                    <input type="number" id="social-123" value="651">
+                  </div>
+                  <div>
+                    <label>Social Nutzen ewig (in TE)</label>
+                    <input type="number" id="social-ewig" value="714">
+                  </div>
+                </div>
               </div>
             </div>
-
-            <div class="accordion">
-              <button class="accordion-btn" id="toggle-math-btn"><i class="fa-solid fa-calculator"></i> Exakten Rechenweg für Klausurheft anzeigen</button>
-              <div class="accordion-content hidden" id="math-details"></div>
-            </div>
-
-            <div class="interpretation-box">
-              <h4>d) Muster-Interpretation für die Klausur:</h4>
-              <p id="res-interpretation">Lädt Interpretation...</p>
-            </div>
-          </div>
+          </form>
         </div>
-      </section>
-
-      <!-- MODULE 2: PCAF SCOPE 3 CATEGORY 15 FINANCED EMISSIONS -->
-      <section id="mod-pcaf" class="tab-pane">
-        <div class="grid-2">
-          <div class="card glass">
-            <h2><i class="fa-solid fa-industry color-accent"></i> PCAF Financed Emissions Rechner (Übung 3)</h2>
-            <p>Das PCAF-Framework (Partnership for Carbon Accounting Financials) dient der Berechnung von kredit- und investitionsbezogenen Scope 3 Category 15 Portfolio-Emissionen für Banken.</p>
-            <div class="formula-box">
-              $$\text{Finanzierte Emissionen} = \sum_{i} \left( \frac{\text{Ausstehender Kreditbetrag}_i}{\text{Eigenkapital}_i + \text{Fremdkapital}_i} \times \text{Emissionen}_i \right)$$
-            </div>
-
-            <form id="pcaf-form" class="margin-top">
-              <h4 class="section-title">Kreditnehmer-Daten eingeben</h4>
-              <div class="input-grid-2">
-                <div class="input-group">
-                  <label>Kreditbetrag der Bank ($O_i$ in Mio. €)</label>
-                  <input type="number" id="pcaf-credit" value="50" step="0.1">
-                </div>
-                <div class="input-group">
-                  <label>Gesamtes Firmenkapital ($EK_i + FK_i$ in Mio. €)</label>
-                  <input type="number" id="pcaf-totcap" value="200" step="0.1">
-                </div>
-                <div class="input-group">
-                  <label>Scope 1 &amp; 2 Emissionen (t CO2e)</label>
-                  <input type="number" id="pcaf-scope12" value="120000" step="100">
-                </div>
-                <div class="input-group">
-                  <label>Scope 3 Upstream Emissionen (t CO2e)</label>
-                  <input type="number" id="pcaf-scope3" value="350000" step="100">
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div class="card glass">
-            <h2><i class="fa-solid fa-chart-pie color-green"></i> PCAF Berechnungsergebnisse</h2>
-            <div class="summary-cards">
-              <div class="summary-card card-fv">
-                <span class="sc-title">Attributionsfaktor ($AF_i$)</span>
-                <span class="sc-value" id="pcaf-res-af">25.00 %</span>
-                <span class="sc-sub">Kreditbetrag / Gesamtkapital</span>
-              </div>
-              <div class="summary-card card-ev">
-                <span class="sc-title">Finanzierte Scope 1 &amp; 2</span>
-                <span class="sc-value" id="pcaf-res-sc12">30,000 t</span>
-                <span class="sc-sub">t CO2e der Bank</span>
-              </div>
-              <div class="summary-card card-iv">
-                <span class="sc-title">Finanzierte Gesamtemissionen</span>
-                <span class="sc-value" id="pcaf-res-total">117,500 t</span>
-                <span class="sc-sub">Scope 1 + 2 + 3 zuzuordnen</span>
-              </div>
-            </div>
-
-            <div class="formula-box" id="pcaf-math-box">
-              Attributionsfaktor = 50 Mio. / 200 Mio. = 25.00%
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- MODULE 3: EU TAXONOMIE & GREEN ASSET RATIO -->
-      <section id="mod-taxonomie" class="tab-pane">
-        <div class="grid-2">
-          <div class="card glass">
-            <h2><i class="fa-solid fa-chart-pie color-accent"></i> EU-Taxonomie &amp; Green Asset Ratio (Übung 1 &amp; Folie 150/180)</h2>
-            <p>Die EU-Taxonomie bewertet die Taxonomie-Konformität anhand von 3 KPIs: Umsatz (Turnover), CapEx (Investitionen) und OpEx (Betriebsausgaben). Für Banken gilt die <strong>Green Asset Ratio (GAR)</strong>.</p>
-            <div class="formula-box">
-              $$\text{GAR} = \frac{\text{Taxonomie-konforme Risikopositionen}}{\text{Abgedeckte Gesamt-Vermögenswerte (Total Covered Assets)}}$$
-            </div>
-
-            <form id="gar-form" class="margin-top">
-              <h4 class="section-title">Bankbilanz-Daten (in Mio. €)</h4>
-              <div class="input-grid-2">
-                <div class="input-group">
-                  <label>Taxonomie-konforme Kredite</label>
-                  <input type="number" id="gar-tax-align" value="450" step="1">
-                </div>
-                <div class="input-group">
-                  <label>Taxonomie-fähige Kredite (Eligible)</label>
-                  <input type="number" id="gar-tax-elig" value="800" step="1">
-                </div>
-                <div class="input-group">
-                  <label>Total Covered Assets (Abgedeckt)</label>
-                  <input type="number" id="gar-tot-cov" value="3000" step="10">
-                </div>
-                <div class="input-group">
-                  <label>Staatsanleihen / ZB (Ausgeschlossen)</label>
-                  <input type="number" id="gar-excl" value="500" step="10">
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div class="card glass">
-            <h2><i class="fa-solid fa-list-check color-green"></i> Taxonomie &amp; GAR Analyse</h2>
-            <div class="summary-cards">
-              <div class="summary-card card-fv">
-                <span class="sc-title">Taxonomie-Fähigkeit Ratio</span>
-                <span class="sc-value" id="gar-res-elig">26.67 %</span>
-                <span class="sc-sub">Eligible / Covered Assets</span>
-              </div>
-              <div class="summary-card card-iv">
-                <span class="sc-title">Green Asset Ratio (GAR)</span>
-                <span class="sc-value" id="gar-res-gar">15.00 %</span>
-                <span class="sc-sub">Aligned / Covered Assets</span>
-              </div>
-            </div>
-
-            <div class="interpretation-box margin-top">
-              <h4>Klausur-Erklärung zur GAR:</h4>
-              <p>Die Green Asset Ratio zeigt den prozentualen Anteil der Bankbilanz, der direkte Umweltziele der EU-Taxonomie unterstützt (Substantial Contribution + DNSH + Minimum Safeguards).</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- MODULE 4: ÖKOBILANZIERUNG (LCA) -->
-      <section id="mod-lca" class="tab-pane">
-        <div class="grid-2">
-          <div class="card glass">
-            <h2><i class="fa-solid fa-recycle color-accent"></i> LCA Ökobilanzierung (Übung 3 Aufgabe 14)</h2>
-            <p>Getränkeverpackungsvergleich: PET-Einweg vs. Glas-Mehrweg (Cradle-to-Grave, GWP100 Klimawandel). Funktionale Einheit: 1.000 Liter Getränk.</p>
-            
-            <form id="lca-form" class="margin-top">
-              <h4 class="section-title">PET-Einweg Parameter</h4>
-              <div class="input-grid-2">
-                <div class="input-group">
-                  <label>Herstellung PET (g CO2e / Flasche)</label>
-                  <input type="number" id="lca-pet-prod" value="120" step="1">
-                </div>
-                <div class="input-group">
-                  <label>Transport PET (g CO2e / Flasche)</label>
-                  <input type="number" id="lca-pet-trans" value="15" step="1">
-                </div>
-              </div>
-
-              <h4 class="section-title">Glas-Mehrweg Parameter</h4>
-              <div class="input-grid-2">
-                <div class="input-group">
-                  <label>Herstellung Glas (g CO2e / Flasche)</label>
-                  <input type="number" id="lca-glas-prod" value="450" step="5">
-                </div>
-                <div class="input-group">
-                  <label>Umläufe (Trips pro Flasche)</label>
-                  <input type="number" id="lca-glas-trips" value="25" step="1">
-                </div>
-                <div class="input-group">
-                  <label>Spülprozess (g CO2e / Spülgang)</label>
-                  <input type="number" id="lca-glas-spuel" value="30" step="1">
-                </div>
-                <div class="input-group">
-                  <label>Transport Glas (g CO2e / Trip)</label>
-                  <input type="number" id="lca-glas-trans" value="40" step="1">
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div class="card glass">
-            <h2><i class="fa-solid fa-scale-balanced color-green"></i> LCA Auswertung &amp; Break-Even Umläufe</h2>
-            <div class="summary-cards">
-              <div class="summary-card card-ev">
-                <span class="sc-title">PET-Einweg Gesamt</span>
-                <span class="sc-value" id="lca-res-pet">135.0 kg</span>
-                <span class="sc-sub">kg CO2e pro 1.000 Liter</span>
-              </div>
-              <div class="summary-card card-iv">
-                <span class="sc-title">Glas-Mehrweg Gesamt</span>
-                <span class="sc-value" id="lca-res-glas">88.0 kg</span>
-                <span class="sc-sub">kg CO2e pro 1.000 Liter</span>
-              </div>
-            </div>
-
-            <div class="result-effective-tax">
-              <span>Vorteil Glas-Mehrweg:</span>
-              <strong id="lca-res-diff" class="color-green">-34.8% CO2</strong>
-            </div>
-
-            <div class="interpretation-box">
-              <h4>LCA Fazit für die Klausur:</h4>
-              <p id="lca-res-text">Glas-Mehrweg ist bei 25 Umläufen trotz des höheren Transportgewichts ökologisch überlegen, da die Herstellungs-Emissionen auf viele Nutzungsumläufe aufgeteilt werden.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- MODULE 5: WACC & SOZIALES KAPITAL -->
-      <section id="mod-wacc" class="tab-pane">
-        <div class="grid-2">
-          <div class="card glass">
-            <h2><i class="fa-solid fa-coins color-accent"></i> WACC &amp; Soziales/Ökologisches Kapital (Übung 3 Aufgabe 9)</h2>
-            <p>Vergleich von Unternehmen bezüglich finanzieller Kapitalkosten ($r_{ek}, r_{fk}$) und Kosten für soziales/ökologisches Kapital.</p>
-            
-            <form id="wacc-form" class="margin-top">
-              <h4 class="section-title">Finanzielle Kapitalkosten</h4>
-              <div class="input-grid-2">
-                <div class="input-group">
-                  <label>Eigenkapitalkosten ($r_{ek}$ in %)</label>
-                  <input type="number" id="w-rek" value="10.5" step="0.1">
-                </div>
-                <div class="input-group">
-                  <label>Fremdkapitalkosten ($r_{fk}$ in %)</label>
-                  <input type="number" id="w-rfk" value="5.0" step="0.1">
-                </div>
-                <div class="input-group">
-                  <label>Eigenkapitalquote ($EK / V$ in %)</label>
-                  <input type="number" id="w-ekq" value="60" step="1">
-                </div>
-                <div class="input-group">
-                  <label>Steuersatz ($s$ in %)</label>
-                  <input type="number" id="w-tax" value="30" step="1">
-                </div>
-              </div>
-
-              <h4 class="section-title">Soziales &amp; Ökologisches Kapital</h4>
-              <div class="input-grid-2">
-                <div class="input-group">
-                  <label>Kosten soz./ökol. Kapital (in %)</label>
-                  <input type="number" id="w-rsoz" value="2.2" step="0.1">
-                </div>
-                <div class="input-group">
-                  <label>Anteil soz./ökol. Kapital am Gesamtkapital (%)</label>
-                  <input type="number" id="w-sozq" value="15" step="1">
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div class="card glass">
-            <h2><i class="fa-solid fa-chart-bar color-green"></i> WACC Ergebnisse</h2>
-            <div class="summary-cards">
-              <div class="summary-card card-fv">
-                <span class="sc-title">Klassischer WACC (Finanziell)</span>
-                <span class="sc-value" id="wacc-res-trad">7.70 %</span>
-                <span class="sc-sub">Ohne soz./ökol. Kapital</span>
-              </div>
-              <div class="summary-card card-iv">
-                <span class="sc-title">Erweiterter Integrated WACC</span>
-                <span class="sc-value" id="wacc-res-integ">6.88 %</span>
-                <span class="sc-sub">Inkl. soz./ökol. Kapital</span>
-              </div>
-            </div>
-
-            <div class="formula-box" id="wacc-formula-display">
-              WACC = 0.60 * 10.5% + 0.40 * 5.0% * (1 - 0.30) = 7.70%
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB: KLAUSUR FALLEN (Unverändert nützlich) -->
-      <section id="tab-traps" class="tab-pane">
-        <div class="card glass">
-          <h2><i class="fa-solid fa-triangle-exclamation color-red"></i> ⚠️ Die 5 tödlichen Klausur-Fallen &amp; Edge Cases</h2>
-          <div class="traps-grid">
-            <div class="trap-card">
-              <div class="trap-header"><span class="trap-badge">Falle 1</span><h3>SolZ-Berechnung</h3></div>
-              <p>SolZ ($5{,}5\%$) fällt NUR auf die KSt ($15\%$) an! $s_{eff} = 15\% \times 1{,}055 + 14\% = \mathbf{29{,}825\%}$.</p>
-            </div>
-            <div class="trap-card">
-              <div class="trap-header"><span class="trap-badge">Falle 2</span><h3>Ewige Rente Diskontierung</h3></div>
-              <p>Barwert ewige Rente $= \frac{FCF_{ewig}}{r_{wacc} \cdot (1+r_{wacc})^{n-1}}$. Diskontierung auf $t=0$ nicht vergessen!</p>
-            </div>
-            <div class="trap-card">
-              <div class="trap-header"><span class="trap-badge">Falle 3</span><h3>Vorzeichen bei Integrated Value</h3></div>
-              <p>Environmental Value = Schaden ($\rightarrow$ minus). Social Value = Nutzen ($\rightarrow$ plus).</p>
-            </div>
-            <div class="trap-card">
-              <div class="trap-header"><span class="trap-badge">Falle 4</span><h3>Fremdkapitalzinsen</h3></div>
-              <p>FK-Zinsen NICHT vom EBIT abziehen! Der WACC ist ein Bruttoansatz.</p>
-            </div>
-            <div class="trap-card">
-              <div class="trap-header"><span class="trap-badge">Falle 5</span><h3>Einheiten &amp; 4 Nachkommastellen</h3></div>
-              <p>Mio. Tonnen CO2 $\times$ €/t Schattenpreis = Mio. Euro. Auf 4 Nachkommastellen runden.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </main>
+      </div>
+    </div>
 
     <footer class="app-footer">
-      <p>NAMA Gesamtrechner &amp; Übungssuite &bull; Entwickelt für Antigravity / Uni Siegen SoSe 2026</p>
+      <p>NAMA M&amp;A Valuation Trainer &bull; Entwickelt für Antigravity / Uni Siegen SoSe 2026</p>
     </footer>
   </div>
 
