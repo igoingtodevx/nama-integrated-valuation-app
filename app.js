@@ -7,7 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Altklausur 1: Krombacher Brauerei / Hawesko GmbH (SoSe 2025 – 1. PT)",
       tag: "Sommersemester 2025 – 1. PT (Dr. Mies)",
       story: `Der CFO der Krombacher Brauerei prüft derzeit, gemeinsam mit einer amerikanischen Private-Equity-Gesellschaft den internationalen Weinimporteur Hawesko GmbH zu übernehmen. Da es für die Hawesko GmbH bislang keine detaillierten Zukunftsplanungen gibt, bittet der CFO Sie um eine überschlägige Bewertung des Unternehmens auf Basis einer Financial Due Diligence für die Jahre 2023 bis 2026.<br><br>
-      Das Fremdkapital beträgt in allen Geschäftsjahren konstant 6.500 TE, wobei der Buchwert dem Marktwert entspricht. Investitionen werden jeweils in Höhe der Abschreibungen vorgenommen. Die Hawesko GmbH verfügt über eine hochmoderne Logistik an der A3. Im Rahmen Ihrer Due Diligence erhalten Sie zudem den CO2-Verbrauch der Verwaltung, der Teilabfüllanlage sowie der Logistik als saldierten Wert auf Jahresbasis.`,
+      <div class="table-responsive"><table class="data-table">
+        <thead><tr><th>In TE</th><th>2023</th><th>2024</th><th>2025</th><th>ab 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Periodenergebnis vor Zinsen, Steuern und Abschreibungen (EBITDA)</td><td>1.850</td><td>2.250</td><td>1.950</td><td>2.850</td></tr>
+          <tr><td>Abschreibungen</td><td>450</td><td>450</td><td>450</td><td>450</td></tr>
+        </tbody>
+      </table></div><br>
+      Das Fremdkapital beträgt in allen Geschäftsjahren konstant 6.500 TE, wobei der Buchwert dem Marktwert entspricht. Investitionen werden jeweils in Höhe der Abschreibungen vorgenommen. Die Hawesko GmbH verfügt über eine hochmoderne Logistik an der A3. Im Rahmen Ihrer Due Diligence erhalten Sie zudem den CO2-Verbrauch der Verwaltung, der Teilabfüllanlage sowie der Logistik als saldierten Wert auf Jahresbasis.<br><br>
+      <div class="table-responsive"><table class="data-table">
+        <thead><tr><th>Parameter</th><th>2023</th><th>2024</th><th>2025</th><th>ab 2026</th></tr></thead>
+        <tbody>
+          <tr><td>CO2 in Mio. Tonnen</td><td>7</td><td>9,5</td><td>9</td><td>10</td></tr>
+          <tr><td>SchattenPreis laut TruePriceIndex</td><td>224</td><td>232</td><td>240</td><td>240</td></tr>
+        </tbody>
+      </table></div><br>
+      Weiterhin sind folgende Angaben bekannt:<br>
+      - Kapitalkostensatz r_WACC = 8,15%<br>
+      - Körperschaftsteuer s_ks = 15%<br>
+      - Fremdkapitalkosten r_Fk = 5,4%<br>
+      - Abgeltungssteuer s_A = 25%<br>
+      - Gewerbesteuer s_gew = 14%<br>
+      - Solidaritätszuschlag s_z = 5,5%`,
       sks: 15, sgew: 14, sz: 5.5, rwacc: 8.15, rfk: 5.4, fk: 6500,
       ebitda: [1850, 2250, 1950, 2850],
       afa: [450, 450, 450, 450],
@@ -19,7 +40,28 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Altklausur 2: Maschinenbau Müller GmbH (SoSe 2025 – 2. PT)",
       tag: "Sommersemester 2025 – 2. PT (Dr. Mies)",
       story: `Der CFO eines führenden Siegener Maschinenbauunternehmens prüft derzeit gemeinsam mit einer amerikanischen Private-Equity-Gesellschaft die Übernahme des internationalen Anbieters für Industrieanlagen, der Maschinenbau Müller GmbH. Da es für die Maschinenbau Müller GmbH bislang keine detaillierten Zukunftsplanungen gibt, bittet der CFO Sie um eine überschlägige Bewertung des Unternehmens auf Basis einer Financial Due Diligence für die Jahre 2023 bis 2026.<br><br>
-      Das Fremdkapital beträgt in allen Geschäftsjahren konstant 6.500 TE, wobei der Buchwert dem Marktwert entspricht. Investitionen werden jeweils in Höhe der Abschreibungen vorgenommen. Die Müller GmbH verfügt über eine hochmoderne Fertigung an der A45. Im Rahmen Ihrer Due Diligence erhalten Sie zudem den CO2-Verbrauch der Verwaltung, der Teilabfüllanlage sowie der Logistik als saldierten Wert auf Jahresbasis.`,
+      <div class="table-responsive"><table class="data-table">
+        <thead><tr><th>In TE</th><th>2023</th><th>2024</th><th>2025</th><th>ab 2026</th></tr></thead>
+        <tbody>
+          <tr><td>Periodenergebnis vor Zinsen, Steuern und Abschreibungen</td><td>1.950</td><td>3.250</td><td>2.950</td><td>4.850</td></tr>
+          <tr><td>Abschreibungen</td><td>450</td><td>450</td><td>450</td><td>450</td></tr>
+        </tbody>
+      </table></div><br>
+      Das Fremdkapital beträgt in allen Geschäftsjahren konstant 6.500 TE, wobei der Buchwert dem Marktwert entspricht. Investitionen werden jeweils in Höhe der Abschreibungen vorgenommen. Die Müller GmbH verfügt über eine hochmoderne Fertigung an der A45. Im Rahmen Ihrer Due Diligence erhalten Sie zudem den CO2-Verbrauch der Verwaltung, der Teilabfüllanlage sowie der Logistik als saldierten Wert auf Jahresbasis.<br><br>
+      <div class="table-responsive"><table class="data-table">
+        <thead><tr><th>Parameter</th><th>2023</th><th>2024</th><th>2025</th><th>ab 2026</th></tr></thead>
+        <tbody>
+          <tr><td>CO2 in Mio. Tonnen</td><td>7</td><td>9,5</td><td>9</td><td>10</td></tr>
+          <tr><td>SchattenPreis laut TruePriceIndex</td><td>224</td><td>232</td><td>240</td><td>240</td></tr>
+        </tbody>
+      </table></div><br>
+      Weiterhin sind folgende Angaben bekannt:<br>
+      - Kapitalkostensatz r_WACC = 8,15%<br>
+      - Körperschaftsteuer s_ks = 15%<br>
+      - Fremdkapitalkosten r_Fk = 5,4%<br>
+      - Abgeltungssteuer s_A = 25%<br>
+      - Gewerbesteuer s_gew = 14%<br>
+      - Solidaritätszuschlag s_z = 5,5%`,
       sks: 15, sgew: 14, sz: 5.5, rwacc: 8.15, rfk: 5.4, fk: 6500,
       ebitda: [1950, 3250, 2950, 4850],
       afa: [450, 450, 450, 450],
@@ -31,7 +73,30 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Altklausur 3: Siegerland Zwickelbier / Sauerland Brauerei (SoSe 2024 – 1. PT)",
       tag: "Sommersemester 2024 – 1. PT (Dr. Mies)",
       story: `Der CFO der Siegerland Zwickelbier AG erwägt, die Sauerland Privatbrauerei GmbH gemeinsam mit einer amerikanischen Private Equity Gesellschaft zu erwerben. Da für die Sauerland Privatbrauerei noch keine Planungen vorliegen, bittet Sie der CFO um eine überschlägige Wertermittlung auf Basis einer Financial Due Diligence für die Jahre 2021 bis 2024.<br><br>
-      Das Fremdkapital beträgt in allen Geschäftsjahren konstant 8.000 TE, wobei der Buchwert dem Marktwert entspricht. Investitionen werden in Höhe der Abschreibungen getätigt. Die Sauerland Privatbrauerei verfügt über eine hochmoderne Brauanlage. Auf Basis Ihrer Due Diligence erhalten Sie zusätzlich den CO2-Verbrauch der Abfüllanlage, der Produktion und der Logistik als saldierten Wert auf Jahresbasis. Darüber hinaus engagiert sich die Sauerländer Privatbrauerei für die Renaturierung und Verbesserung der sozioökonomischen Faktoren der Regenwaldbewohner. Eine empirische Studie der Universität Siegen schätzt, dass dadurch die Lebensqualität der Anrainer stetig steigt (Quality life years added: 6,2 / 6,4 / 6,7 / ab 2024: 6,8; Schattenpreis: 105 je 1000 EUR).`,
+      <div class="table-responsive"><table class="data-table">
+        <thead><tr><th>In TE</th><th>2021</th><th>2022</th><th>2023</th><th>ab 2024</th></tr></thead>
+        <tbody>
+          <tr><td>Periodenergebnis vor Zinsen, Steuern und Abschreibungen</td><td>1.500</td><td>1.750</td><td>1.900</td><td>2.020</td></tr>
+          <tr><td>Abschreibungen</td><td>240</td><td>240</td><td>240</td><td>240</td></tr>
+        </tbody>
+      </table></div><br>
+      Das Fremdkapital beträgt in allen Geschäftsjahren konstant 8.000 TE, wobei der Buchwert dem Marktwert entspricht. Investitionen werden in Höhe der Abschreibungen getätigt. Die Sauerland Privatbrauerei verfügt über eine hochmoderne Brauanlage. Auf Basis Ihrer Due Diligence erhalten Sie zusätzlich den CO2-Verbrauch der Abfüllanlage, der Produktion und der Logistik als saldierten Wert auf Jahresbasis. Darüber hinaus engagiert sich die Sauerländer Privatbrauerei für die Renaturierung und Verbesserung der sozioökonomischen Faktoren der Regenwaldbewohner. Eine empirische Studie der Universität Siegen schätzt, dass dadurch die Lebensqualität der Anrainer stetig steigt.<br><br>
+      <div class="table-responsive"><table class="data-table">
+        <thead><tr><th>Parameter</th><th>2021</th><th>2022</th><th>2023</th><th>ab 2024</th></tr></thead>
+        <tbody>
+          <tr><td>CO2 in Mio. Tonnen</td><td>4</td><td>2,9</td><td>3</td><td>2,9</td></tr>
+          <tr><td>SchattenPreis laut TruePriceIndex</td><td>224</td><td>232</td><td>240</td><td>240</td></tr>
+          <tr><td>Quality life years added</td><td>6,2</td><td>6,4</td><td>6,7</td><td>6,8</td></tr>
+          <tr><td>Schattenpreis, je 1000 EUR</td><td>105</td><td>105</td><td>105</td><td>105</td></tr>
+        </tbody>
+      </table></div><br>
+      Weiterhin sind folgende Angaben bekannt:<br>
+      - Kapitalkostensatz r_WACC = 7,3625%<br>
+      - Körperschaftsteuer s_ks = 15%<br>
+      - Fremdkapitalkosten r_Fk = 4%<br>
+      - Abgeltungssteuer s_A = 25%<br>
+      - Gewerbesteuer s_gew = 14%<br>
+      - Solidaritätszuschlag s_z = 5,5%`,
       sks: 15, sgew: 14, sz: 5.5, rwacc: 7.3625, rfk: 4.0, fk: 8000,
       ebitda: [1500, 1750, 1900, 2020],
       afa: [240, 240, 240, 240],
@@ -43,7 +108,28 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Altklausur 4: Siegerländer Genussmanufaktur / BordeauxToGo (SoSe 2024 – 2. PT)",
       tag: "Sommersemester 2024 – 2. PT (Dr. Mies)",
       story: `Der CFO der Siegerländer Genussmanufaktur erwägt, den Zukauf des internationalen Weinhandels BordeauxToGo LLC gemeinsam mit einer amerikanischen Private Equity Gesellschaft zu erwerben. Da für die BordeauxToGo LLC noch keine Planungen vorliegen, bittet Sie der CFO um eine überschlägige Wertermittlung auf Basis einer Financial Due Diligence für die Jahre 2021 bis 2024.<br><br>
-      Das Fremdkapital beträgt in allen Geschäftsjahren konstant 7.000 TE, wobei der Buchwert dem Marktwert entspricht. Investitionen werden in Höhe der Abschreibungen getätigt. Die BordeauxToGo verfügt über eine hochmoderne Logistik an der A45. Auf Basis Ihrer Due Diligence erhalten Sie zudem den CO2-Verbrauch der Verwaltung, der Teilabfüllanlage sowie der Logistik als saldierten Wert auf Jahresbasis.`,
+      <div class="table-responsive"><table class="data-table">
+        <thead><tr><th>In TE</th><th>2021</th><th>2022</th><th>2023</th><th>ab 2024</th></tr></thead>
+        <tbody>
+          <tr><td>Periodenergebnis vor Zinsen, Steuern und Abschreibungen</td><td>1.600</td><td>1.850</td><td>1.800</td><td>2.150</td></tr>
+          <tr><td>Abschreibungen</td><td>300</td><td>300</td><td>300</td><td>300</td></tr>
+        </tbody>
+      </table></div><br>
+      Das Fremdkapital beträgt in allen Geschäftsjahren konstant 7.000 TE, wobei der Buchwert dem Marktwert entspricht. Investitionen werden in Höhe der Abschreibungen getätigt. Die BordeauxToGo verfügt über eine hochmoderne Logistik an der A45. Auf Basis Ihrer Due Diligence erhalten Sie zudem den CO2-Verbrauch der Verwaltung, der Teilabfüllanlage sowie der Logistik als saldierten Wert auf Jahresbasis.<br><br>
+      <div class="table-responsive"><table class="data-table">
+        <thead><tr><th>Parameter</th><th>2021</th><th>2022</th><th>2023</th><th>ab 2024</th></tr></thead>
+        <tbody>
+          <tr><td>CO2 in Mio. Tonnen</td><td>4</td><td>2,9</td><td>3</td><td>2,9</td></tr>
+          <tr><td>SchattenPreis laut TruePriceIndex</td><td>224</td><td>232</td><td>240</td><td>240</td></tr>
+        </tbody>
+      </table></div><br>
+      Weiterhin sind folgende Angaben bekannt:<br>
+      - Kapitalkostensatz r_WACC = 7,78%<br>
+      - Körperschaftsteuer s_ks = 15%<br>
+      - Fremdkapitalkosten r_Fk = 4%<br>
+      - Abgeltungssteuer s_A = 25%<br>
+      - Gewerbesteuer s_gew = 14%<br>
+      - Solidaritätszuschlag s_z = 5,5%`,
       sks: 15, sgew: 14, sz: 5.5, rwacc: 7.78, rfk: 4.0, fk: 7000,
       ebitda: [1600, 1850, 1800, 2150],
       afa: [300, 300, 300, 300],
